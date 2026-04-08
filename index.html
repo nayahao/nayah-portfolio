@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nayah Laurent — CS & MIS student at the University of Houston. Building full-stack apps, data tools, and AI-powered features.">
+    <title>Nayah Laurent</title>
+
+    <!--
+        FONTS:
+        · Syne       — geometric retro-bold headings (800wt)
+        · Space Mono — terminal / label / monospace text
+        · Inter      — readable body text
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     LOADING SCREEN — boot window
+     ═══════════════════════════════════════════════════════ -->
+<div id="loader" aria-hidden="true">
+    <div class="loader-win">
+        <div class="loader-win-bar">
+            <div class="win-dots">
+                <span class="dot d-red"></span>
+                <span class="dot d-yellow"></span>
+                <span class="dot d-green"></span>
+            </div>
+            <!-- REPLACE: Change this filename if you want -->
+            <span class="mono loader-win-title">nl_portfolio.exe</span>
+        </div>
+        <div class="loader-body">
+            <p class="loader-brand mono">NL_OS v1.0</p>
+            <div id="loader-terminal"></div>
+            <div class="loader-prog-wrap">
+                <div class="loader-prog" id="loader-prog"></div>
+            </div>
+            <p class="loader-pct mono" id="loader-pct">0%</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     MOUSE GLOW — soft ambient light that follows cursor
+     ═══════════════════════════════════════════════════════ -->
+<div id="mouse-glow" aria-hidden="true"></div>
+
+<!-- CUSTOM CURSOR -->
+<div id="cursor-dot"  aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar" aria-label="Main navigation">
+    <div class="nav-wrap">
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links" role="list">
+            <li><a href="#about"      class="nav-link">about</a></li>
+            <li><a href="#skills"     class="nav-link">skills</a></li>
+            <li><a href="#projects"   class="nav-link">projects</a></li>
+            <li><a href="#experience" class="nav-link">experience</a></li>
+            <li><a href="#contact"    class="nav-link nav-cta">contact</a></li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════ -->
+<section id="home" class="hero" aria-label="Introduction">
+    <div class="hero-inner">
+
+        <!-- Left: text -->
+        <div class="hero-text">
+
+            <!-- REPLACE: Your name -->
+            <h1 class="hero-name">
+                <span class="hero-anim">Nayah</span>
+                <span class="hero-anim">Laurent</span>
+            </h1>
+
+            <!-- Role + university -->
+            <div class="hero-role hero-anim">
+                <span class="role-chip">CS &amp; MIS</span>
+                <span class="role-sep" aria-hidden="true">@</span>
+                <!-- REPLACE: Your university -->
+                <span class="role-school">University of Houston</span>
+            </div>
+
+            <!-- Typing animation — words are set in js/main.js -->
+            <p class="hero-typing hero-anim" aria-label="Currently building">
+                <span class="t-dim">Building </span><span id="typing-text"></span><span class="t-cur" aria-hidden="true">|</span>
+            </p>
+
+            <!-- Status badge -->
+            <div class="hero-status hero-anim">
+                <span class="status-dot" aria-hidden="true"></span>
+                Open to Internships
+            </div>
+
+            <!-- CTA buttons -->
+            <div class="hero-btns hero-anim">
+                <!-- REPLACE: Add your resume PDF to assets/resume.pdf -->
+                <a href="Resume.pdf" class="btn btn-primary" target="_blank" rel="noopener">
+                    <i class="fas fa-file-alt" aria-hidden="true"></i> Resume
+                </a>
+                <a href="#contact" class="btn btn-outline">Say Hi</a>
+            </div>
+
+        </div>
+
+        <!-- Right: photo in a window frame -->
+        <div class="hero-photo hero-anim" aria-label="Profile photo">
+            <div class="photo-win">
+                <div class="photo-win-bar">
+                    <div class="win-dots">
+                        <span class="dot d-red"></span>
+                        <span class="dot d-yellow"></span>
+                        <span class="dot d-green"></span>
+                    </div>
+                    <!-- REPLACE: Update filename to match your photo -->
+                    <span class="mono photo-win-title">profile.jpg</span>
+                </div>
+                <!--
+                    REPLACE YOUR PHOTO:
+                    1. Add your photo to: assets/images/profile.jpg
+                    2. Delete the .photo-ph div below
+                    3. Uncomment the <img> tag below
+                -->
+                <img src="IMG_2544.JPG" alt="Nayah Laurent" class="photo-img"> 
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <!-- Animated scroll hint -->
+    <div class="scroll-hint" aria-hidden="true">
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     01. ABOUT
+     ═══════════════════════════════════════════════════════ -->
+<section id="about" class="section" aria-labelledby="about-title">
+    <div class="container">
+
+        <header class="sec-head reveal">
+            <span class="sec-num mono" aria-hidden="true">01 —</span>
+            <h2 class="sec-title" id="about-title" data-scramble="ABOUT ME">ABOUT ME</h2>
+        </header>
+
+        <div class="about-layout">
+
+            <!-- Bio -->
+            <div class="about-text">
+                <!-- REPLACE: Your actual bio -->
+                <p class="reveal">
+                    Hi, I'm Nayah! I'm a Senior computer science and management information systems student at the University of Houston.
+                    My passion lies in being at the intersection of technology and real-world problems and building things
+                    that are functional, intentional, and actually worth using.
+                </p>
+                <p class="reveal">
+                    My work spans full-stack web development, data analysis, mobile apps,
+                    and AI-powered features. I've shipped things used by real people,
+                    collaborated in cross-functional teams, and translated technical
+                    decisions for non-technical stakeholders. 
+                </p>
+                <p class="reveal">
+                    another paragraph aboput me.
+                </p>
+
+                <!-- REPLACE: Your interest tags -->
+                <div class="about-chips reveal">
+                    <span class="chip">Full-Stack Dev</span>
+                    <span class="chip">Data Analytics</span>
+                    <span class="chip">AI Features</span>
+                    <span class="chip">Product Thinking</span>
+                    <span class="chip">Teaching</span>
+                </div>
+            </div>
+
+            <!-- Properties panel (Windows dialog style) -->
+            <div class="about-panel reveal">
+                <div class="win-panel">
+                    <div class="win-bar">
+                        <div class="win-dots">
+                            <span class="dot d-red"></span>
+                            <span class="dot d-yellow"></span>
+                            <span class="dot d-green"></span>
+                        </div>
+                        <span class="win-title mono">nayah.properties</span>
+                    </div>
+                    <div class="win-body">
+                        <dl class="props-list">
+                            <div class="prop-row">
+                                <dt class="mono">SCHOOL</dt>
+                                <dd>University of Houston</dd>
+                            </div>
+                            <div class="prop-row">
+                                <dt class="mono">DEGREE</dt>
+                                <dd>B.S. CS + MIS Minor</dd>
+                            </div>
+                            <!-- REPLACE: Your GPA or delete this row -->
+                            <div class="prop-row">
+                                <dt class="mono">GPA</dt>
+                                <dd>3.7 / 4.0</dd>
+                            </div>
+                            <div class="prop-row">
+                                <dt class="mono">GRAD</dt>
+                                <dd>December 2026</dd>
+                            </div>
+                            <div class="prop-row">
+                                <dt class="mono">LOCATION</dt>
+                                <dd>Houston, TX</dd>
+                            </div>
+                            <div class="prop-row last">
+                                <dt class="mono">STATUS</dt>
+                                <dd class="prop-open">
+                                    <span class="s-dot" aria-hidden="true"></span>
+                                    Open to Internships
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     02. SKILLS
+     REPLACE: Swap out skills as needed.
+     ═══════════════════════════════════════════════════════ -->
+<section id="skills" class="section section-alt" aria-labelledby="skills-title">
+    <div class="container">
+
+        <header class="sec-head reveal">
+            <span class="sec-num mono" aria-hidden="true">02 —</span>
+            <h2 class="sec-title" id="skills-title" data-scramble="SKILLS">SKILLS</h2>
+        </header>
+
+        <div class="skills-panels">
+
+            <div class="win-panel reveal">
+                <div class="win-bar" style="--bar-bg: #c4868e;">
+                    <div class="win-dots"><span class="dot d-red"></span><span class="dot d-yellow"></span><span class="dot d-green"></span></div>
+                    <span class="win-title mono">languages.txt</span>
+                </div>
+                <div class="win-body skill-body">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">HTML / CSS</span>
+                </div>
+            </div>
+
+            <div class="win-panel reveal">
+                <div class="win-bar" style="--bar-bg: #c48672;">
+                    <div class="win-dots"><span class="dot d-red"></span><span class="dot d-yellow"></span><span class="dot d-green"></span></div>
+                    <span class="win-title mono">frameworks.txt</span>
+                </div>
+                <div class="win-body skill-body">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">React Native</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">Supabase</span>
+                    <span class="skill-tag">Twig</span>
+                    <span class="skill-tag">Expo</span>
+                    <span class="skill-tag">PHP</span>
+                </div>
+            </div>
+
+            <div class="win-panel reveal">
+                <div class="win-bar" style="--bar-bg: #8a9ea8;">
+                    <div class="win-dots"><span class="dot d-red"></span><span class="dot d-yellow"></span><span class="dot d-green"></span></div>
+                    <span class="win-title mono">tools.txt</span>
+                </div>
+                <div class="win-body skill-body">
+                    <span class="skill-tag">Git / GitHub</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Jira</span>
+                    <span class="skill-tag">Excel</span>
+                    <span class="skill-tag">Agile / Scrum</span>
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">Postman</span>
+                    <span class="skill-tag">Claude / AI</span>
+                </div>
+            </div>
+
+            <div class="win-panel reveal">
+                <div class="win-bar" style="--bar-bg: #8a9e8e;">
+                    <div class="win-dots"><span class="dot d-red"></span><span class="dot d-yellow"></span><span class="dot d-green"></span></div>
+                    <span class="win-title mono">databases.txt</span>
+                </div>
+                <div class="win-body skill-body">
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">Supabase</span>
+                    <span class="skill-tag">Firebase</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     03. PROJECTS (moved above experience per request)
+     ═══════════════════════════════════════════════════════ -->
+<section id="projects" class="section" aria-labelledby="proj-title">
+    <div class="container">
+
+        <header class="sec-head reveal">
+            <span class="sec-num mono" aria-hidden="true">03 —</span>
+            <h2 class="sec-title" id="proj-title" data-scramble="PROJECTS">PROJECTS</h2>
+        </header>
+
+        <div class="proj-grid">
+
+            <!-- ─── RunLogic ─── -->
+            <article class="proj-card reveal" aria-label="RunLogic project">
+                <div class="proj-bar">
+                    <div class="win-dots"><span class="dot d-red"></span><span class="dot d-yellow"></span><span class="dot d-green"></span></div>
+                    <span class="win-title mono">runlogic.exe</span>
+                    <div class="proj-links-bar">
+                        <!-- REPLACE: Add your real GitHub / demo links -->
+                        <a href="#" class="proj-icon-link" title="GitHub" target="_blank" rel="noopener" tabindex="-1">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="proj-icon-link" title="Live Demo" target="_blank" rel="noopener" tabindex="-1">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="proj-media">
+                    <!--
+                        ADD THUMBNAIL: delete .proj-ph, uncomment:
+                        <img src="assets/images/project-1.jpg" alt="RunLogic" class="proj-thumb">
+
+                        ADD DEMO VIDEO (auto-plays on hover):
+                        <video class="proj-video" src="assets/videos/project-1.mp4" loop muted playsinline></video>
+                    -->
+                    <div class="proj-ph" style="--ph-h: 340;">
+                        <span class="proj-ph-num mono">01</span>
+                    </div>
+                </div>
+                <div class="proj-body">
+                    <h3 class="proj-name">RunLogic</h3>
+                    <p class="proj-sub mono">Marathon Training Plan Generator</p>
+                    <p class="proj-desc">
+                        Full-stack training plan generator. A custom Python algorithm adapts plans
+                        to user goals, experience, and schedule. Includes an interactive calendar,
+                        workout analytics, secure auth, and automated reminders.
+                    </p>
+                    <div class="proj-tags">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Supabase</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ─── Astera ─── -->
+            <article class="proj-card reveal" aria-label="Astera project">
+                <div class="proj-bar">
+                    <div class="win-dots"><span class="dot d-red"></span><span class="dot d-yellow"></span><span class="dot d-green"></span></div>
+                    <span class="win-title mono">astera.app</span>
+                    <div class="proj-links-bar">
+                        <a href="#" class="proj-icon-link" title="GitHub" target="_blank" rel="noopener" tabindex="-1">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="proj-icon-link" title="Live Demo" target="_blank" rel="noopener" tabindex="-1">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="proj-media">
+                    <div class="proj-ph" style="--ph-h: 12;">
+                        <span class="proj-ph-num mono">02</span>
+                    </div>
+                </div>
+                <div class="proj-body">
+                    <h3 class="proj-name">Astera</h3>
+                    <p class="proj-sub mono">Plant Care Mobile App</p>
+                    <p class="proj-desc">
+                        Cross-platform mobile app for plant care. Identify plants via camera,
+                        manage watering schedules, receive push notification reminders, and get
+                        AI-based suggestions for diagnosing plant health issues.
+                    </p>
+                    <div class="proj-tags">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Expo</span>
+                        <span class="tech-tag">plant.id API</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ─── CAIC Website ─── -->
+            <article class="proj-card reveal" aria-label="CAIC project">
+                <div class="proj-bar">
+                    <div class="win-dots"><span class="dot d-red"></span><span class="dot d-yellow"></span><span class="dot d-green"></span></div>
+                    <span class="win-title mono">caic-site.html</span>
+                    <div class="proj-links-bar">
+                        <a href="#" class="proj-icon-link" title="Live Site" target="_blank" rel="noopener" tabindex="-1">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="proj-media">
+                    <div class="proj-ph" style="--ph-h: 200;">
+                        <span class="proj-ph-num mono">03</span>
+                    </div>
+                </div>
+                <div class="proj-body">
+                    <h3 class="proj-name">CAIC Initiative Site</h3>
+                    <p class="proj-sub mono">Public-Facing Nonprofit Website</p>
+                    <p class="proj-desc">
+                        Website for the Colorado Alcohol Impacts Initiative Coalition. Built from
+                        stakeholder requirements gathered across community leaders and policy experts,
+                        translating advocacy goals into accessible, maintainable web features.
+                    </p>
+                    <div class="proj-tags">
+                        <span class="tech-tag">Twig</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">PHP</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ─── AI Resume Optimizer ─── -->
+            <article class="proj-card reveal" aria-label="AI Resume Optimizer project">
+                <div class="proj-bar">
+                    <div class="win-dots"><span class="dot d-red"></span><span class="dot d-yellow"></span><span class="dot d-green"></span></div>
+                    <span class="win-title mono">resume-ai.ts</span>
+                    <div class="proj-links-bar">
+                        <a href="#" class="proj-icon-link" title="GitHub" target="_blank" rel="noopener" tabindex="-1">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="proj-media">
+                    <div class="proj-ph" style="--ph-h: 160;">
+                        <span class="proj-ph-num mono">04</span>
+                    </div>
+                </div>
+                <div class="proj-body">
+                    <h3 class="proj-name">AI Resume Optimizer</h3>
+                    <p class="proj-sub mono">JobRadar Feature — Prompt Engineering</p>
+                    <p class="proj-desc">
+                        AI feature for the JobRadar platform that analyzes job listings and generates
+                        tailored resume improvements via prompt engineering and structured LLM outputs.
+                        Shipped within a 15-member cross-functional product team.
+                    </p>
+                    <div class="proj-tags">
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">AI / LLMs</span>
+                    </div>
+                </div>
+            </article>
+
+        </div><!-- /proj-grid -->
+
+        <div class="proj-more reveal">
+            <!-- REPLACE: Your GitHub username -->
+            <a href="https://github.com/nayahao" class="btn btn-outline" target="_blank" rel="noopener">
+                <i class="fab fa-github" aria-hidden="true"></i> More on GitHub
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     04. EXPERIENCE (moved below projects per request)
+     ═══════════════════════════════════════════════════════ -->
+<section id="experience" class="section section-alt" aria-labelledby="exp-title">
+    <div class="container">
+
+        <header class="sec-head reveal">
+            <span class="sec-num mono" aria-hidden="true">04 —</span>
+            <h2 class="sec-title" id="exp-title" data-scramble="EXPERIENCE">EXPERIENCE</h2>
+        </header>
+
+        <div class="timeline" role="list">
+
+            <!-- ─── IT / Web Dev Intern ─── -->
+            <div class="tl-item reveal" role="listitem">
+                <div class="tl-line" aria-hidden="true"><div class="tl-node"></div></div>
+                <div class="win-panel tl-card">
+                    <div class="win-bar">
+                        <div class="win-dots"><span class="dot d-red"></span><span class="dot d-yellow"></span><span class="dot d-green"></span></div>
+                        <span class="win-title mono">jan 2026 — present</span>
+                    </div>
+                    <div class="win-body">
+                        <div class="tl-head">
+                            <div>
+                                <h3 class="tl-role">IT / Web Development Intern</h3>
+                                <p class="tl-org mono">The Steadman Group — Remote</p>
+                            </div>
+                            <span class="tl-badge badge-intern">Internship</span>
+                        </div>
+                        <ul class="tl-bullets">
+                            <li>Developing and launching the CAIC website by gathering requirements in stakeholder meetings with community leaders, victims, and policy experts.</li>
+                            <li>Converting organizational requirements into accessible web functionality, improving usability and long-term maintainability for a public-facing initiative.</li>
+                            <li>Collaborating with non-technical stakeholders to align technical decisions with community impact goals.</li>
+                        </ul>
+                        <div class="tl-tech">
+                            <span class="tech-tag">Twig</span>
+                            <span class="tech-tag">HTML / CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">Git</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── Software Developer — JobRadar ─── -->
+            <div class="tl-item reveal" role="listitem">
+                <div class="tl-line" aria-hidden="true"><div class="tl-node"></div></div>
+                <div class="win-panel tl-card">
+                    <div class="win-bar">
+                        <div class="win-dots"><span class="dot d-red"></span><span class="dot d-yellow"></span><span class="dot d-green"></span></div>
+                        <span class="win-title mono">aug 2025 — apr 2026</span>
+                    </div>
+                    <div class="win-body">
+                        <div class="tl-head">
+                            <div>
+                                <h3 class="tl-role">Software Developer</h3>
+                                <p class="tl-org mono">JobRadar (APM Client Project) — Remote</p>
+                            </div>
+                            <span class="tl-badge badge-dev">Dev</span>
+                        </div>
+                        <ul class="tl-bullets">
+                            <li>Developed an AI-powered feature that analyzes job listings and generates personalized resume improvements via prompt engineering and structured LLM outputs.</li>
+                            <li>Collaborated within a 15-member product, design, and marketing team to define feature scope and deliver a final showcase highlighting technical scalability.</li>
+                        </ul>
+                        <div class="tl-tech">
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">AI / LLMs</span>
+                            <span class="tech-tag">Git</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── Data Quality Analyst ─── -->
+            <div class="tl-item reveal" role="listitem">
+                <div class="tl-line" aria-hidden="true"><div class="tl-node"></div></div>
+                <div class="win-panel tl-card">
+                    <div class="win-bar">
+                        <div class="win-dots"><span class="dot d-red"></span><span class="dot d-yellow"></span><span class="dot d-green"></span></div>
+                        <span class="win-title mono">oct 2024 — may 2025</span>
+                    </div>
+                    <div class="win-body">
+                        <div class="tl-head">
+                            <div>
+                                <h3 class="tl-role">Data Quality Analyst (Operations)</h3>
+                                <p class="tl-org mono">Transcore — Houston, TX</p>
+                            </div>
+                            <span class="tl-badge badge-data">Analyst</span>
+                        </div>
+                        <ul class="tl-bullets">
+                            <li>Verified and analyzed incoming datasets from data entry team, maintaining 99%+ accuracy under tight deadlines.</li>
+                            <li>Redesigned validation workflows after analyzing operational data, reducing backlog by ~20%.</li>
+                            <li>Bridged data processors and supervisors, improving communication flow and error resolution time.</li>
+                        </ul>
+                        <div class="tl-tech">
+                            <span class="tech-tag">Data Analysis</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Excel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── Leadership ─── -->
+            <div class="tl-item reveal" role="listitem">
+                <div class="tl-line" aria-hidden="true"><div class="tl-node"></div></div>
+                <div class="win-panel tl-card">
+                    <div class="win-bar" style="--bar-bg: #c4a06a;">
+                        <div class="win-dots"><span class="dot d-red"></span><span class="dot d-yellow"></span><span class="dot d-green"></span></div>
+                        <span class="win-title mono">leadership</span>
+                    </div>
+                    <div class="win-body">
+                        <div class="tl-head">
+                            <div>
+                                <h3 class="tl-role">Microsoft Program Teacher</h3>
+                                <p class="tl-org mono">Microsoft Tech Resilience — UH Cougarettes · Aug–Nov 2025</p>
+                            </div>
+                            <span class="tl-badge badge-lead">Leadership</span>
+                        </div>
+                        <ul class="tl-bullets">
+                            <li>Led interactive workshops on problem-solving and technical fundamentals, helping students build confidence in the tech industry.</li>
+                        </ul>
+                        <div class="tl-divider"></div>
+                        <div class="tl-head" style="margin-top:1.1rem;">
+                            <div>
+                                <h3 class="tl-role">Data Science Facilitator</h3>
+                                <p class="tl-org mono">Girls Who Code — U of Michigan Bioinformatics · Aug 2023–May 2024</p>
+                            </div>
+                        </div>
+                        <ul class="tl-bullets">
+                            <li>Taught Python, data visualization, and analytics fundamentals to 20+ students, guiding them from raw data to meaningful insights and presentations.</li>
+                        </ul>
+                        <div class="tl-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Data Visualization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── Education ─── -->
+            <div class="tl-item reveal" role="listitem">
+                <div class="tl-line" aria-hidden="true"><div class="tl-node"></div></div>
+                <div class="win-panel tl-card">
+                    <div class="win-bar" style="--bar-bg: #8a9e8e;">
+                        <div class="win-dots"><span class="dot d-red"></span><span class="dot d-yellow"></span><span class="dot d-green"></span></div>
+                        <span class="win-title mono">jan 2024 — dec 2026</span>
+                    </div>
+                    <div class="win-body">
+                        <div class="tl-head">
+                            <div>
+                                <h3 class="tl-role">B.S. Computer Science, Minor in MIS</h3>
+                                <p class="tl-org mono">University of Houston — GPA: 3.7 / 4.0</p>
+                            </div>
+                            <span class="tl-badge badge-edu">Education</span>
+                        </div>
+                        <ul class="tl-bullets">
+                            <li>Relevant Coursework: Database Systems, Software Development, Business Technology Consulting, Data Structures &amp; Algorithms</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /timeline -->
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     05. CONTACT
+     ═══════════════════════════════════════════════════════ -->
+<section id="contact" class="section" aria-labelledby="contact-title">
+    <div class="container">
+
+        <header class="sec-head reveal">
+            <span class="sec-num mono" aria-hidden="true">05 —</span>
+            <h2 class="sec-title" id="contact-title" data-scramble="LET'S TALK">LET'S TALK</h2>
+        </header>
+
+        <div class="contact-layout">
+
+            <!-- Form panel -->
+            <div class="win-panel contact-panel reveal">
+                <div class="win-bar">
+                    <div class="win-dots"><span class="dot d-red"></span><span class="dot d-yellow"></span><span class="dot d-green"></span></div>
+                    <span class="win-title mono">new_message.txt</span>
+                </div>
+                <div class="win-body">
+                    <p class="contact-intro">
+                        Whether it's nternship opportunities, collaborations, cool projects, or just
+                        saying hi, I'm always happy to hear from people building
+                        interesting things.
+                    </p>
+
+                    <!--
+                        ╔═══════════════════════════════════════════════╗
+                        ║  FORM SETUP                                   ║
+                        ╠═══════════════════════════════════════════════╣
+                        ║  1. Sign up free at formspree.io              ║
+                        ║  2. Create a form → copy the endpoint URL     ║
+                        ║  3. Paste it in the action="" below           ║
+                        ║                                               ║
+                        ║  Alternative: change action to:               ║
+                        ║  "mailto:nayahlaurent@gmail.com"              ║
+                        ╚═══════════════════════════════════════════════╝
+                    -->
+                    <form id="contact-form"
+                          action="https://formspree.io/f/YOUR_FORMSPREE_ID"
+                          method="POST"
+                          novalidate
+                          aria-label="Contact form">
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="name" class="form-label mono">name</label>
+                                <input type="text" id="name" name="name"
+                                       class="form-input" placeholder="Your name"
+                                       required autocomplete="name">
+                            </div>
+                            <div class="form-field">
+                                <label for="email" class="form-label mono">email</label>
+                                <input type="email" id="email" name="email"
+                                       class="form-input" placeholder="your@email.com"
+                                       required autocomplete="email">
+                            </div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="message" class="form-label mono">message</label>
+                            <textarea id="message" name="message"
+                                      class="form-input form-textarea"
+                                      placeholder="What's on your mind?"
+                                      rows="5" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i> Send It
+                        </button>
+
+                        <p class="form-status" id="form-status" aria-live="polite" role="status"></p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Socials panel -->
+            <aside class="contact-aside reveal" aria-label="Social links">
+                <div class="win-panel">
+                    <div class="win-bar">
+                        <div class="win-dots"><span class="dot d-red"></span><span class="dot d-yellow"></span><span class="dot d-green"></span></div>
+                        <span class="win-title mono">socials.lnk</span>
+                    </div>
+                    <div class="win-body socials-body">
+
+                        <a href="mailto:nayahlaurent@gmail.com" class="social-card">
+                            <div class="social-icon-wrap" style="--sc: #c4868e;">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                            </div>
+                            <div class="social-text">
+                                <span class="social-label mono">Email</span>
+                                <span class="social-val">nayahlaurent@gmail.com</span>
+                            </div>
+                            <i class="fas fa-chevron-right social-arr" aria-hidden="true"></i>
+                        </a>
+
+                        <a href="https://linkedin.com/in/nayah-laurent" class="social-card" target="_blank" rel="noopener">
+                            <div class="social-icon-wrap" style="--sc: #8a9ea8;">
+                                <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                            </div>
+                            <div class="social-text">
+                                <span class="social-label mono">LinkedIn</span>
+                                <span class="social-val">linkedin.com/in/nayah-laurent</span>
+                            </div>
+                            <i class="fas fa-chevron-right social-arr" aria-hidden="true"></i>
+                        </a>
+
+                        <!-- REPLACE: Your GitHub username -->
+                        <a href="https://github.com/nayahao" class="social-card" target="_blank" rel="noopener">
+                            <div class="social-icon-wrap" style="--sc: #6b5e5a;">
+                                <i class="fab fa-github" aria-hidden="true"></i>
+                            </div>
+                            <div class="social-text">
+                                <span class="social-label mono">GitHub</span>
+                                <span class="social-val">github.com/nayahao</span>
+                            </div>
+                            <i class="fas fa-chevron-right social-arr" aria-hidden="true"></i>
+                        </a>
+
+                        
+
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        <div class="footer-inner">
+            <p class="footer-copy">© 2026 Nayah Laurent</p>
+        </div>
+    </div>
+</footer>
+
+
+<script src="js/main.js"></script>
+</body>
+</html>
